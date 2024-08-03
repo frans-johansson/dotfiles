@@ -1,0 +1,22 @@
+-- Set <space> as the leader key
+-- This has to happen before any plugins are loaded
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- Personal configuration
+require("config.options")
+require("config.keymaps")
+require("config.autocmds")
+require("config.tabline")
+
+-- Install the plugin manager Lazy
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+end
+---@diagnostic disable-next-line: undefined-field
+vim.opt.rtp:prepend(lazypath)
+
+-- Install and configure plugins from 'lua/plugins'
+require("lazy").setup("plugins")
