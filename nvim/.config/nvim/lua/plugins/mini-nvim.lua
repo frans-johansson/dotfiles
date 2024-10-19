@@ -23,12 +23,6 @@ return {
         local statusline = require("mini.statusline")
         statusline.setup()
 
-        -- Other mini.nvim plugins
-        require("mini.pairs").setup()
-        require("mini.align").setup()
-        require("mini.comment").setup()
-        require("mini.move").setup()
-
         -- You can configure sections in the statusline by overriding their
         -- default behavior. For example, here we set the section for
         -- cursor location to LINE:COLUMN
@@ -36,5 +30,22 @@ return {
         statusline.section_location = function()
             return "%2l:%-2v"
         end
+
+        require("mini.tabline").setup()
+
+        -- Other mini.nvim plugins
+        require("mini.pairs").setup()
+        require("mini.align").setup()
+        require("mini.comment").setup()
+        require("mini.move").setup()
+        require("mini.indentscope").setup({
+            draw = {
+                animation = require("mini.indentscope").gen_animation.none(),
+            },
+        })
+
+        -- Use one of the colorschemes
+        vim.cmd.colorscheme("minicyan")
+        vim.opt.background = "dark"
     end,
 }

@@ -7,7 +7,6 @@ vim.g.maplocalleader = " "
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
-require("config.tabline")
 
 -- Install the plugin manager Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
